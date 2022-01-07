@@ -8,6 +8,10 @@ set number
 " Set show command
 set showcmd
 
+""""""""""""""""""Text, tab and indent related""""""""""""""""""
+" Set shiftround, indent auto align
+set shiftround
+
 """"""""""""""""""NERDTree""""""""""""""""""
 " auto open NERDTree
 au VimEnter * NERDTree
