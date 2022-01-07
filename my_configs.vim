@@ -15,6 +15,8 @@ hi LineNr ctermfg=31 ctermbg=236
 set cursorline
 hi CursorLine term=bold cterm=bold
 
+" Set wrap key add <-,-> in insert mode
+set whichwrap+=~,[,]
 
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
