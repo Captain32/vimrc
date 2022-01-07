@@ -8,6 +8,9 @@ set number
 " Set show command
 set showcmd
 
+" Highlight line number and its background
+hi LineNr ctermfg=31 ctermbg=236
+
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
 set shiftround
