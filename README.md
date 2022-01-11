@@ -137,6 +137,13 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 
 ## How to include your own stuff?
 
+Captain32 install plugin method (via pathogen manage my plugin, can see ~/.vim_runtime/vimrcs/plugins_config.vim):
+
+    cd ~/.vim_runtime
+    git submodule add https://github.com/octol/vim-cpp-enhanced-highlight.git my_plugins/vim-cpp-enhanced-highlight # add plugin's git url to submodule
+    git submodule update --init --recursive # update submodule (pull the submodules)
+
+
 After you have installed the setup, you can create **~/.vim_runtime/my_configs.vim** to fill in any configurations that are important for you. For instance, my **my_configs.vim** looks like this:
 
 	~/.vim_runtime (master)> cat my_configs.vim
