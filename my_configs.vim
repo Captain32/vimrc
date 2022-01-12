@@ -9,7 +9,7 @@ set number
 set showcmd
 
 " Highlight line number and its background
-hi LineNr ctermfg=31 ctermbg=236
+" hi LineNr ctermfg=31 ctermbg=236
 
 " Set cursorline font bold
 set cursorline

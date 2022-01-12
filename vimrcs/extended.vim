@@ -27,10 +27,14 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" Colorscheme
-set background=dark
-colorscheme peaksea
+" default Colorscheme
+" set background=dark
+" colorscheme peaksea
 
+" my Colorcheme
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
