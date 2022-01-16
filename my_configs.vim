@@ -37,6 +37,9 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 
 """"""""""""""""""COC Config""""""""""""""""""
+" Support custom coc-settings.json file path in .vimrc
+let g:coc_config_home = '~/.vim_runtime'
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.

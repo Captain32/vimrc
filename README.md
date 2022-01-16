@@ -417,3 +417,10 @@ Maintaining this Vim configuration isn't my day job. Daily I am the founder/CEO 
 
 PS: Using Vim isn't a requirement 😄
 
+## COC Config
+
+Github address: https://github.com/neoclide/coc.nvim
+
+coc-settings.json path config
+
+    let g:coc_confing_home = '~/.vim_runtime'
