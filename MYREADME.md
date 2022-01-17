@@ -1,5 +1,12 @@
 # Captain32 vim配置使用
 
+## VIM学习资料
+
+* [常用cheatsheets](https://github.com/skywind3000/awesome-cheatsheets/blob/master/editors/vim.txt)
+* [官方帮助文档](http://vimdoc.sourceforge.net/htmldoc/)
+* [Awesome插件](https://vimawesome.com/)
+* [VimScipt教程](https://learnvimscriptthehardway.stevelosh.com/)
+
 ## 安装
 
     git clone --depth=1 https://github.com/Captain32/vimrc.git ~/.vim_runtime
