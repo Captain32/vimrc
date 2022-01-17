@@ -424,3 +424,5 @@ Github address: https://github.com/neoclide/coc.nvim
 coc-settings.json path config
 
     let g:coc_confing_home = '~/.vim_runtime'
+
+clangd install:

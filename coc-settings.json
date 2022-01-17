@@ -6,5 +6,10 @@
       "trace.server": "verbose",
       "filetypes": ["go"]
     }
-  }
+  },
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.noselect": false,
+  "suggest.enablePreview": true,
+  "suggest.minTriggerInputLength": 1,
+  "suggest.acceptSuggestionOnCommitCharacter": true
 }

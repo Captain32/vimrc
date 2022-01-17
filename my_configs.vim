@@ -40,6 +40,12 @@ let g:go_highlight_operators = 1
 " Support custom coc-settings.json file path in .vimrc
 let g:coc_config_home = '~/.vim_runtime'
 
+let g:coc_global_extensions = ['coc-tsserver','coc-html','coc-css', 'coc-json',
+            \ 'coc-java','coc-python','coc-flutter',
+            \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
+            \ 'coc-markdownlint','coc-highlight',
+            \ 'coc-clangd']
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
