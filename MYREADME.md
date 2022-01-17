@@ -9,7 +9,8 @@
 
 ## 安装
 
-    git clone --depth=1 https://github.com/Captain32/vimrc.git ~/.vim_runtime
+    git clone --depth=1 https://github.com/Captain32/vimrc.git ~/.vim_runtime # https
+    git clone git@github.com:Captain32/vimrc.git ~/.vim_runtime # ssh
     sh ~/.vim_runtime/install_awesome_vimrc.sh
     git submodule update --init --recursive
 
