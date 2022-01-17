@@ -13,7 +13,7 @@ set showcmd
 
 " Set cursorline font bold
 set cursorline
-hi CursorLine term=bold cterm=bold
+" hi CursorLine term=bold cterm=bold
 
 " Set wrap key add <-,-> in insert mode
 set whichwrap+=~,[,]
@@ -33,6 +33,8 @@ let g:NERDTreeWinPos = "left"
 """"""""""""""""""vim-indent_guides""""""""""""""""""
 " Enable indent guides when startup
 let g:indent_guides_enable_on_vim_startup = 1
+" Disable auto colors
+let g:indent_guides_auto_colors = 0
 " Which indent level to start showing guide
 let g:indent_guides_start_level = 2
 " Specify a list of filetypes to disable the plugin
@@ -40,8 +42,8 @@ let g:indent_guides_exclude_filetypes = ['help']
 " Customize the size of the indent guide
 let g:indent_guides_guide_size = 1
 " Set indent line color
-hi IndentGuidesOdd  ctermbg=92
-hi IndentGuidesEven ctermbg=95
+hi IndentGuidesOdd  ctermbg=238
+hi IndentGuidesEven ctermbg=240
 
 
 """"""""""""""""""Go Config""""""""""""""""""

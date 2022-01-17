@@ -65,11 +65,18 @@
     *  进入到`.vim_runtime/my_plugins/coc.nvim`目录中
     *  `yarn install`即可
 * 需要使用C/C++补全的话，因为用了coc-clangd插件，还得在本机安装clangd才能生效
-    * `brew install llvm`即可 
+    * `brew install llvm`即可
+    * 上一步
 
 ### [vim-instant-markdown](https://github.com/instant-markdown/vim-instant-markdown)
 
 可以实时在浏览器中预览markdown。
+
+**额外需要**
+
+* 安装`instant-markdown-d`
+    * `npm -g install instant-markdown-d`即可
+* 注意不要开代理，不然无法浏览器预览，小飞机得关掉
 
 ## 个性化配置
 
