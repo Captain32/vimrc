@@ -59,7 +59,7 @@ let g:go_highlight_operators = 1
 let g:coc_config_home = '~/.vim_runtime'
 
 let g:coc_global_extensions = ['coc-tsserver','coc-html','coc-css', 'coc-json',
-            \ 'coc-java','coc-python','coc-flutter',
+            \ 'coc-java','coc-pyright','coc-flutter',
             \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
             \ 'coc-markdownlint','coc-highlight',
             \ 'coc-clangd','coc-sh','coc-go']

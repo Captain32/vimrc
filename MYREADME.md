@@ -46,12 +46,12 @@
 
 
 在`my_configs.vim`中也自定义了一些初始化时就安装的语言插件，比如：
-    
+
     let g:coc_global_extensions = ['coc-tsserver','coc-html','coc-css', 'coc-json',
-            \ 'coc-java','coc-python','coc-flutter',
+            \ 'coc-java','coc-pyright','coc-flutter',
             \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
             \ 'coc-markdownlint','coc-highlight',
-            \ 'coc-clangd','coc-sh']
+            \ 'coc-clangd','coc-sh','coc-go']
 
 
 
