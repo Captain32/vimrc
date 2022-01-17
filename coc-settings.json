@@ -1,12 +1,4 @@
 {
-  "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    }
-  },
   "suggest.triggerAfterInsertEnter": true,
   "suggest.noselect": false,
   "suggest.enablePreview": true,
