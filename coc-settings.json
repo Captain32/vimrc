@@ -1,7 +1,14 @@
 {
-  "suggest.triggerAfterInsertEnter": true,
-  "suggest.noselect": false,
-  "suggest.enablePreview": true,
-  "suggest.minTriggerInputLength": 1,
-  "suggest.acceptSuggestionOnCommitCharacter": true
+    "languageserver": {
+        "sql": {
+            "command": "sql-language-server",
+            "args" : ["up", "--method", "stdio"],
+            "filetypes": ["sql", "mysql"]
+        }
+    },
+    "suggest.triggerAfterInsertEnter": true,
+    "suggest.noselect": false,
+    "suggest.enablePreview": true,
+    "suggest.minTriggerInputLength": 1,
+    "suggest.acceptSuggestionOnCommitCharacter": true
 }

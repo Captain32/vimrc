@@ -42,7 +42,7 @@
 
 ### [coc.nvim](https://github.com/neoclide/coc.nvim)
 
-管理代码补全插件的神器，本身也可以在其MarketPlace安装各个语言的插件，也可以通过`coc-settings.json`配置language server的方式实现。比如我的配置中Go语言的gopls就是通过这个配置文件来的。
+管理代码补全插件的神器，本身也可以在其MarketPlace安装各个语言的插件，也可以通过`coc-settings.json`配置language server的方式实现。比如我的配置中SQL语言的[`sql-language-server`](https://github.com/joe-re/sql-language-server)就是通过这个配置文件来的。
 
 
 在`my_configs.vim`中也自定义了一些初始化时就安装的语言插件，比如：
@@ -67,6 +67,9 @@
 * 需要使用C/C++补全的话，因为用了coc-clangd插件，还得在本机安装clangd才能生效
     * `brew install llvm`即可
     * 上一步
+* 需要使用Go补全的话，因为用了gopls插件，需要在本机安装gopls(之前的vim-go安装过)
+* 需要使用SQL补全的话，因为要用`sql-language-server`，所以需要本机先安装
+    * `npm i -g sql-language-server`即可
 
 ### [vim-instant-markdown](https://github.com/instant-markdown/vim-instant-markdown)
 
