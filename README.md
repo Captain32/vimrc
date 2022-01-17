@@ -16,7 +16,7 @@ I would, of course, recommend using the awesome version.
 ### Install for your own user only
 The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
 
-	git clone --depth=1 https://github.com/Captain32/vimrc.git ~/.vim_runtime
+	git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 	sh ~/.vim_runtime/install_awesome_vimrc.sh
 	
 ### Install for multiple users
@@ -136,13 +136,6 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 
 
 ## How to include your own stuff?
-
-Captain32 install plugin method (via pathogen manage my plugin, can see ~/.vim_runtime/vimrcs/plugins_config.vim):
-
-    cd ~/.vim_runtime
-    git submodule add https://github.com/octol/vim-cpp-enhanced-highlight.git my_plugins/vim-cpp-enhanced-highlight # add plugin's git url to submodule
-    git submodule update --init --recursive # update submodule (pull the submodules)
-
 
 After you have installed the setup, you can create **~/.vim_runtime/my_configs.vim** to fill in any configurations that are important for you. For instance, my **my_configs.vim** looks like this:
 
@@ -417,12 +410,3 @@ Maintaining this Vim configuration isn't my day job. Daily I am the founder/CEO 
 
 PS: Using Vim isn't a requirement 😄
 
-## COC Config
-
-Github address: https://github.com/neoclide/coc.nvim
-
-coc-settings.json path config
-
-    let g:coc_confing_home = '~/.vim_runtime'
-
-clangd install:
