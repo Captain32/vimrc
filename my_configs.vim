@@ -39,6 +39,9 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help']
 " Customize the size of the indent guide
 let g:indent_guides_guide_size = 1
+" Set indent line color
+hi IndentGuidesOdd  ctermbg=92
+hi IndentGuidesEven ctermbg=95
 
 
 """"""""""""""""""Go Config""""""""""""""""""
