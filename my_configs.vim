@@ -21,12 +21,25 @@ set whichwrap+=~,[,]
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
 set shiftround
+" Set softtabstop
+set softtabstop=4
 
 """"""""""""""""""NERDTree""""""""""""""""""
 " auto open NERDTree
 au VimEnter * NERDTree
 " NERDTRee position
 let g:NERDTreeWinPos = "left"
+
+""""""""""""""""""vim-indent_guides""""""""""""""""""
+" Enable indent guides when startup
+let g:indent_guides_enable_on_vim_startup = 1
+" Which indent level to start showing guide
+let g:indent_guides_start_level = 2
+" Specify a list of filetypes to disable the plugin
+let g:indent_guides_exclude_filetypes = ['help']
+" Customize the size of the indent guide
+let g:indent_guides_guide_size = 1
+
 
 """"""""""""""""""Go Config""""""""""""""""""
 " Go syntax highlighting
