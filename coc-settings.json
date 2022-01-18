@@ -1,11 +1,4 @@
 {
-    "languageserver": {
-        "sql": {
-            "command": "sql-language-server",
-            "args" : ["up", "--method", "stdio"],
-            "filetypes": ["sql", "mysql"]
-        }
-    },
     "suggest.triggerAfterInsertEnter": true,
     "suggest.noselect": false,
     "suggest.enablePreview": true,

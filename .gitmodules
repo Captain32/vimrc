@@ -10,3 +10,12 @@
 [submodule "my_plugins/vim-instant-markdown"]
 	path = my_plugins/vim-instant-markdown
 	url = https://github.com/instant-markdown/vim-instant-markdown.git
+[submodule "my_plugins/vim-airline"]
+	path = my_plugins/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "my_plugins/vim-airline-themes"]
+	path = my_plugins/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "my_plugins/vim-bufferline"]
+	path = my_plugins/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git

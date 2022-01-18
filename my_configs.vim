@@ -18,6 +18,9 @@ set cursorline
 " Set wrap key add <-,-> in insert mode
 set whichwrap+=~,[,]
 
+" Map <C-^> to gb, 3gb will go to the third buffer
+map gb <C-^>
+
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
 set shiftround
@@ -62,7 +65,7 @@ let g:coc_global_extensions = ['coc-tsserver','coc-html','coc-css', 'coc-json',
             \ 'coc-java','coc-pyright','coc-flutter',
             \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
             \ 'coc-markdownlint','coc-highlight',
-            \ 'coc-clangd','coc-sh','coc-go']
+            \ 'coc-clangd','coc-sh','coc-go','coc-sql']
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -112,3 +115,27 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+""""""""""""""Lightline""""""""""""""
+" Disable Lightline
+let g:lightline.enable = {
+            \ 'statusline': 0,
+            \ 'tabline': 0
+            \ }
+
+""""""""""""""Airline""""""""""""""
+" Enable tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='wombat'
+" tabline formatter
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+
+" Show buffer line
+let g:airline#extensions#bufferline#enabled = 1
+
+"""""""""""""Bufferline"""""""""""""
+let g:bufferline_rotate = 0
