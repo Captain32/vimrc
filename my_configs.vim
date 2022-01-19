@@ -30,6 +30,12 @@ set termwinsize=12*0
 " Split a window will put the new window below the current one
 set splitbelow
 
+" Maps Shift-[up,down,left,right] to resizing a window split
+nnoremap <silent> <S-Left> <C-w><
+nnoremap <silent> <S-Down> <C-W>-
+nnoremap <silent> <S-Up> <C-W>+
+nnoremap <silent> <S-Right> <C-w>>
+
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
 set shiftround
