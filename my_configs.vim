@@ -19,7 +19,16 @@ set cursorline
 set whichwrap+=~,[,]
 
 " Map <C-^> to gb, 3gb will go to the third buffer
-nmap gb <C-^>
+nnoremap gb <C-^>
+
+" Two <Esc> make terminal into normal mode, could scroll
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Set term window 12 rows
+set termwinsize=12*0
+
+" Split a window will put the new window below the current one
+set splitbelow
 
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
