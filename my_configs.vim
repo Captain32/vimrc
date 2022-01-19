@@ -33,7 +33,7 @@ au VimEnter * NERDTree
 " NERDTRee position
 let g:NERDTreeWinPos = "left"
 
-""""""""""""""""""vim-indent_guides""""""""""""""""""
+""""""""""""""""""vim-indent-guides""""""""""""""""""
 " Enable indent guides when startup
 let g:indent_guides_enable_on_vim_startup = 1
 " Disable auto colors
@@ -48,6 +48,11 @@ let g:indent_guides_guide_size = 1
 hi IndentGuidesOdd  ctermbg=238
 hi IndentGuidesEven ctermbg=240
 
+""""""""""""""""""cpp-enhanced-highlight""""""""""""""""""
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
 
 """"""""""""""""""Go Config""""""""""""""""""
 " Go syntax highlighting
