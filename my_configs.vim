@@ -148,3 +148,7 @@ let g:airline#extensions#bufferline#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 """""""""""""Bufferline"""""""""""""
 let g:bufferline_rotate = 0
+
+"""""""""""""nerdtree git plugin"""""""""""""
+" Hide [ and ]
+let g:NERDTreeGitStatusConcealBrackets = 0

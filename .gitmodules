@@ -19,3 +19,6 @@
 [submodule "my_plugins/vim-bufferline"]
 	path = my_plugins/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
+[submodule "my_plugins/nerdtree-git-plugin"]
+	path = my_plugins/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
