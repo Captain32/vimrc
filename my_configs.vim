@@ -19,7 +19,7 @@ set cursorline
 set whichwrap+=~,[,]
 
 " Map <C-^> to gb, 3gb will go to the third buffer
-map gb <C-^>
+nmap gb <C-^>
 
 """"""""""""""""""Text, tab and indent related""""""""""""""""""
 " Set shiftround, indent auto align
@@ -144,5 +144,8 @@ let g:airline#extensions#tabline#show_close_button = 0
 
 " Show buffer line
 let g:airline#extensions#bufferline#enabled = 0
+
+" Fugitive
+let g:airline#extensions#branch#enabled = 1
 """""""""""""Bufferline"""""""""""""
 let g:bufferline_rotate = 0
