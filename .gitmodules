@@ -25,3 +25,9 @@
 [submodule "my_plugins/tagbar"]
 	path = my_plugins/tagbar
 	url = https://github.com/preservim/tagbar.git
+[submodule "my_plugins/LeaderF"]
+	path = my_plugins/LeaderF
+	url = https://github.com/Yggdroot/LeaderF.git
+[submodule "my_plugins/vista"]
+	path = my_plugins/vista
+	url = https://github.com/liuchengxu/vista.vim.git

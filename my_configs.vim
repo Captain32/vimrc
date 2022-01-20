@@ -136,13 +136,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-""""""""""""""Lightline""""""""""""""
-" Disable Lightline
-let g:lightline.enable = {
-            \ 'statusline': 0,
-            \ 'tabline': 0
-            \ }
-
 """"""""""""""Airline""""""""""""""
 let g:airline_theme='wombat'
 " Enable tabline
@@ -175,13 +168,13 @@ let g:NERDTreeGitStatusConcealBrackets = 0
 
 """""""""""""tagbar"""""""""""""
 nmap <F9> :TagbarToggle<CR>
-
+let g:tagbar_compact=1
 " C/C++ tag bar config
 let g:tagbar_type_cpp = {
     \ 'kinds' : [
          \ 'c:classes:0:1',
          \ 'd:macros:0:1',
-         \ 'e:enumerators:0:0', 
+         \ 'e:enumerators:0:1', 
          \ 'f:functions:0:1',
          \ 'g:enumeration:0:1',
          \ 'l:local:0:1',
@@ -240,4 +233,35 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
 \ }
 
-" 
+"""""""""""""""LeaderF""""""""""""""" 
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_ShowDevIcons = 0
+
+let g:Lf_ShortcutF = '<leader>f'
+let g:Lf_ShortcutB = '<leader>fb'
+noremap <leader>f :LeaderfSelf<cr>
+noremap <leader>fm :LeaderfMru<cr>
+noremap <leader>ff :LeaderfFunction<cr>
+noremap <leader>fb :LeaderfBuffer<cr>
+noremap <leader>ft :LeaderfBufTag<cr>
+noremap <leader>fl :LeaderfLine<cr>
+noremap <leader>fw :LeaderfWindow<cr>
+noremap <leader>frr :LeaderfRgRecall<cr>
+
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+
+"搜索当前光标下函数引用，如果搜索结果只有一个则直接跳转。
+noremap <leader>fc :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+"搜索当前光标下函数定义，如果搜索结果只有一个则直接跳转。
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+"打开上一次gtags搜索窗口。
+noremap <leader>fR :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+"跳转到下一个搜索结果。
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+"跳转到上一个搜索结果。
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+"""""""""""""""Vista"""""""""""""""
+let g:vista#renderer#enable_icon = 0
