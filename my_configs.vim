@@ -201,6 +201,6 @@ let g:tagbar_type_go = {
 		\ 'ctype' : 't',
 		\ 'ntype' : 'n'
 	\ },
-	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsbin'  : '~/go/bin/gotags',
 	\ 'ctagsargs' : '-sort -silent'
 \ }
