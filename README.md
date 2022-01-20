@@ -1,412 +1,116 @@
-![VIM](https://dnp4pehkvoo6n.cloudfront.net/43c5af597bd5c1a64eb1829f011c208f/as/Ultimate%20Vimrc.svg)
+# Captain32 vim配置使用
 
-# The Ultimate vimrc
+## VIM学习资料
 
-Over the last 10 years, I have used and tweaked Vim. This configuration is the ultimate vimrc (or at least my version of it).
+* [常用cheatsheets](https://github.com/skywind3000/awesome-cheatsheets/blob/master/editors/vim.txt)
+* [官方帮助文档](http://vimdoc.sourceforge.net/htmldoc/)
+* [Awesome插件](https://vimawesome.com/)
+* [VimScipt教程](https://learnvimscriptthehardway.stevelosh.com/)
 
-There are two versions:
+## 安装
 
-* **The Basic**: If you want something small just copy [basic.vim](https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim) into your ~/.vimrc and you will have a good basic setup
-* **The Awesome**: Includes a ton of useful plugins, color schemes, and configurations
+    git clone --depth=1 https://github.com/Captain32/vimrc.git ~/.vim_runtime # https
+    git clone git@github.com:Captain32/vimrc.git ~/.vim_runtime # ssh
+    sh ~/.vim_runtime/install_awesome_vimrc.sh
+    git submodule update --init --recursive
 
-I would, of course, recommend using the awesome version.
+## 安装插件
 
-
-## How to install the Awesome version?
-### Install for your own user only
-The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
-
-	git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-	sh ~/.vim_runtime/install_awesome_vimrc.sh
-	
-### Install for multiple users
-To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.
-
-	git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
-	sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime user0 user1 user2
-	# to install for all users with home directories
-	sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
-	
-Naturally, `/opt/vim_runtime` can be any directory, as long as all the users specified have read access.
-
-## Fonts
-
-I recommend using [IBM Plex Mono font](https://github.com/IBM/plex) (it's an open-source and awesome font that can make your code look beautiful). The Awesome vimrc is already setup to try to use it.
-
-Some other fonts that Awesome will try to use:
-
-* [Hack](http://sourcefoundry.org/hack/)
-* [Source Code Pro](https://adobe-fonts.github.io/source-code-pro/)
-
-## How to install the Basic version?
-
-The basic version is just one file and no plugins. Just copy [basic.vim](https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim) and paste it into your vimrc.
-
-The basic version is useful to install on remote servers where you don't need many plugins, and you don't do many edits.
-
-	git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-	sh ~/.vim_runtime/install_basic_vimrc.sh
-
-
-## How to install on Windows?
-
-Use [gitforwindows](http://gitforwindows.org/) to checkout the repository and run the installation instructions above. No special instructions needed ;-)
-
-
-## How to install on Linux
-
-If you have vim aliased as `vi` instead of `vim`, make sure to either alias it: `alias vi=vim`. Otherwise, `apt-get install vim`
-
-
-## How to update to latest version?
-
-Just do a git rebase!
+总体方法是，用pathogen管理，方法如下：
 
     cd ~/.vim_runtime
-    git reset --hard
-    git clean -d --force
-    git pull --rebase
-    python update_plugins.py  # use python3 if python is unavailable
+    git submodule add https://github.com/submodule-name.git my_plugins/submodule-name # add plugin's git url to submodule
+    git submodule update --init --recursive # update submodule (pull the submodule)
 
-NOTE: If you get `ModuleNotFoundError: No module named 'requests'`, you must first install the `requests` python module using `pip`, `pip3`, or `easy_install`.
+下面是已经安装的自定义插件。
 
-    pip install requests
+### [vim-cpp-enhanced-highlight](https://github.com/octol/vim-cpp-enhanced-highlight)
 
-## Some screenshots
+用于C/C++代码高亮，因为vim自带的不够好。
 
-Colors when editing a Python file:
+### [vim-go](https://github.com/fatih/vim-go)
 
-![Screenshot 1](https://dnp4pehkvoo6n.cloudfront.net/07583008e4da885801657e8781777844/as/Python%20editing.png)
+包含了Go语言的一系列命令，代码补全插件(gopls)等等。
 
-[NERD Tree](https://github.com/preservim/nerdtree) plugin in a terminal window:
-![Screenshot 3](https://dnp4pehkvoo6n.cloudfront.net/ae719203166585d64728f28398f4b1b7/as/Terminal%20usage.png)
+**额外需要**
 
-Distraction free mode using [goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2):
-![Screenshot 4](https://dnp4pehkvoo6n.cloudfront.net/f0dcc4c9739148c56cbf8285a910ac41/as/Zen%20mode.png)
+* 安装go
+* 首次进入vim需要安装vim-go需要的一系列二进制文件(需要翻墙)
+    * 会提示用`:GoInstallBinaries`进行安装
+    * 有可能会要配置`GOPATH`(假如没配置的话)，可以`go env`看一下，没有的话配置下，我一般配置到`~/go`(换成绝对路径)
+    * 翻墙失败的话就得手动安装了，可以参考[go get 方法](https://www.sunzhongwei.com/vim-execution-goinstallbinaries-installation-depend-on-failure)或[纯手动](https://bewaremypower.github.io/2019/06/21/%E6%88%91%E7%9A%84vim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-3-Go%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/)。注意手动模式有的没有go.mod会导致无法go install，`go mode init`生成一个go.mod即可。
 
+### [coc.nvim](https://github.com/neoclide/coc.nvim)
 
-## Included Plugins
+管理代码补全插件的神器，本身也可以在其MarketPlace安装各个语言的插件，也可以通过`coc-settings.json`配置language server的方式实现。
 
-I recommend reading the docs of these plugins to understand them better. Each plugin provides a much better Vim experience!
+在`my_configs.vim`中也自定义了一些初始化时就安装的语言插件，比如：
 
-* [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for `the_silver_searcher` (ag) or ack -- a wicked fast grep
-* [bufexplorer.zip](https://github.com/vim-scripts/bufexplorer.zip): Quickly and easily switch between buffers. This plugin can be opened with `<leader+o>`
-* [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim): Fuzzy file, buffer, mru and tag finder. It's mapped to `<Ctrl+F>`
-* [goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2): 
-* [lightline.vim](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline for Vim
-* [NERD Tree](https://github.com/preservim/nerdtree): A tree explorer plugin for vim
-* [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing `gf`
-* [pathogen.vim](https://github.com/tpope/vim-pathogen): Manage your vim runtimepath 
-* [snipmate.vim](https://github.com/garbas/vim-snipmate): snipmate.vim aims to be a concise vim script that implements some of TextMate's snippets features in Vim
-* [ale](https://github.com/dense-analysis/ale): Syntax and lint checking for vim (ALE requires NeoVim >= 0.2.0 or Vim 8 with +timers +job +channel)
-* [vim-commentary](https://github.com/tpope/vim-commentary): Comment stuff out.  Use `gcc` to comment out a line (takes a count), `gc` to comment out the target of a motion. `gcu` uncomments a set of adjacent commented lines.
-* [vim-expand-region](https://github.com/terryma/vim-expand-region): Allows you to visually select increasingly larger regions of text using the same key combination
-* [vim-fugitive](https://github.com/tpope/vim-fugitive): A Git wrapper so awesome, it should be illegal
-* [vim-indent-object](https://github.com/michaeljsmith/vim-indent-object): Defines a new text object representing lines of code at the same indent level. Useful for python/vim scripts
-* [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): Sublime Text style multiple selections for Vim, CTRL+N is remapped to CTRL+S (due to YankRing)
-* [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack): Maintains a history of previous yanks, changes and deletes
-* [vim-zenroom2](https://github.com/amix/vim-zenroom2) Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room
-* [gist-vim](https://github.com/mattn/gist-vim) Easily create gists from Vim using the `:Gist` command
-* [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) Is a plugin for visually displaying indent levels in Vim
-* [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim) EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
-
-
-## Included color schemes
-
-* [peaksea](https://github.com/vim-scripts/peaksea): The default
-* [dracula](https://github.com/dracula/vim)
-* [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
-* [vim-irblack](https://github.com/wgibbs/vim-irblack)
-* [mayansmoke](https://github.com/vim-scripts/mayansmoke)
-* [vim-pyte](https://github.com/therubymug/vim-pyte)
-
-
-## Included modes
-
-* [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
-* [vim-less](https://github.com/groenewege/vim-less)
-* [vim-bundle-mako](https://github.com/sophacles/vim-bundle-mako)
-* [vim-markdown](https://github.com/plasticboy/vim-markdown)
-* [nginx.vim](https://github.com/vim-scripts/nginx.vim): Highlights configuration files for nginx
-* [rust.vim](https://github.com/rust-lang/rust.vim)
-* [vim-ruby](https://github.com/vim-ruby/vim-ruby)
-* [typescript-vim](https://github.com/leafgarland/typescript-vim)
-* [vim-javascript](https://github.com/pangloss/vim-javascript)
-* [vim-python-pep8-indent](https://github.com/Vimjas/vim-python-pep8-indent)
+    let g:coc_global_extensions = ['coc-tsserver','coc-html','coc-css', 'coc-json',
+            \ 'coc-java','coc-pyright','coc-flutter',
+            \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
+            \ 'coc-markdownlint','coc-highlight',
+            \ 'coc-clangd','coc-sh','coc-go','coc-sql']
 
 
-## How to include your own stuff?
 
-After you have installed the setup, you can create **~/.vim_runtime/my_configs.vim** to fill in any configurations that are important for you. For instance, my **my_configs.vim** looks like this:
+**额外需要**
 
-	~/.vim_runtime (master)> cat my_configs.vim
-	map <leader>ct :cd ~/Desktop/Todoist/todoist<cr>
-	map <leader>cw :cd ~/Desktop/Wedoist/wedoist<cr> 
+* 安装nodejs
+    * `brew install node # MacOS`
+* 安装yarn
+    * `npm install -g yarn`
+* 使用yarn为coc.nvim安装所需包
+    *  进入到`.vim_runtime/my_plugins/coc.nvim`目录中
+    *  `yarn install`即可
+* 需要使用C/C++补全的话，因为用了coc-clangd插件，还得在本机安装clangd才能生效
+    * `brew install llvm`即可
+    * 上一步
+* 需要使用Go补全的话，因为用了gopls插件，需要在本机安装gopls(之前的vim-go安装过)
 
-You can also install your plugins, for instance, via pathogen you can install [vim-rails](https://github.com/tpope/vim-rails):
+### [vim-instant-markdown](https://github.com/instant-markdown/vim-instant-markdown)
 
-	cd ~/.vim_runtime
-	git clone git://github.com/tpope/vim-rails.git my_plugins/vim-rails
+可以实时在浏览器中预览markdown。
 
-You can also install plugins without any plugin manager (vim 8+ required):  
-	Add `packloadall` to your .vimrc file  
-	Create pack plugin directory:  
-	`mkdir -p ~/.vim/pack/plugins/start`  
-	Clone the plugin that you want in that directory, for example:  
-	`git clone --depth=1 git://github.com/maxmellon/vim-jsx-pretty  ~/.vim/pack/plugins/vim-jsx-pretty`
+**额外需要**
 
+* 安装`instant-markdown-d`
+    * `npm -g install instant-markdown-d`即可
+* 注意不要开代理，不然无法浏览器预览，小飞机得关掉
 
-## Key Mappings
+### [vim-airline](https://github.com/vim-airline/vim-airline)
 
-The [leader](http://learnvimscriptthehardway.stevelosh.com/chapters/06.html#leader) is `,`, so whenever you see `<leader>` it means `,`.
+一个强大的statusline和tabline工具，可以取代lightline的作用(在my_comfigs.vim中禁掉)，airline支持很多插件的扩展，具体可以看文档，想要选择不同的airline主题的话需要安装[vim-ariline-themes](https://github.com/vim-airline/vim-airline-themes)插件。
 
+### [vim-bufferline](https://github.com/bling/vim-bufferline)
 
-### Normal mode mappings
+一个可以在命令行处显示当前buffer的插件，可以集成到airline中，但是由于自己的Mac会显示E541(状态栏东西过多)，出于强迫症禁掉了，还是在命令行显示。
 
-Fast saving of a buffer (`<leader>w`):
-
-	nmap <leader>w :w!<cr>
-	
-Map `<Space>` to `/` (search) and `<Ctrl>+<Space>` to `?` (backwards search):
-	
-	map <space> /
-	map <C-space> ?
-	map <silent> <leader><cr> :noh<cr>
+### [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
 
-Disable highlights when you press `<leader><cr>`:
-	
-	map <silent> <leader><cr> :noh<cr>
+一个可以在NERDTree中显示出文件当前git状态的插件。
 
-Smart way to move between windows (`<ctrl>j` etc.):
-	
-	map <C-j> <C-W>j
-	map <C-k> <C-W>k
-	map <C-h> <C-W>h
-	map <C-l> <C-W>l
+### [Vista](https://github.com/liuchengxu/vista.vim)
 
-Closing of the current buffer(s) (`<leader>bd` and (`<leader>ba`)):
-	
-	" Close current buffer
-	map <leader>bd :Bclose<cr>
-	
-	" Close all buffers
-	map <leader>ba :1,1000 bd!<cr>
-	
-Useful mappings for managing tabs:
-	
-	map <leader>tn :tabnew<cr>
-	map <leader>to :tabonly<cr>
-	map <leader>tc :tabclose<cr>
-	map <leader>tm :tabmove 
-	
-	" Opens a new tab with the current buffer's path
-	" Super useful when editing files in the same directory
-	map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
-	
-Switch [CWD](http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file) to the directory of the open buffer:
-	
-	map <leader>cd :cd %:p:h<cr>:pwd<cr>
-	
-Open `ack.vim` for fast search:
-	
-	map <leader>g :Ack 
+一个可以显示出代码中组织结构的插件，默认通过ctags可以支持很多种语言，也可以为每个语言个性化配置所使用的插件。
 
-Quickly open a buffer for scripbble:
-	
-	map <leader>q :e ~/buffer<cr>
+**额外需要**
 
-Toggle paste mode on and off:
-	
-	map <leader>pp :setlocal paste!<cr>
+* 由于默认需要ctags支持，所以需要安装ctags，官方推荐安装[universal-ctags](https://github.com/universal-ctags/ctags)
+    * 对于Mac可以选择直接用brew安装，`brew install --HEAD universal-ctags/universal-ctags/universal-ctags`
+    * 对于Linux可以选择直接从源码编译安装，详见github文档
+* 默认使用的ctags就可以支持很多语言，可以通过`ctags --list-languages`查看ctags支持的语言，通过`ctags --list-kinds=c++`这样类似的命令就可以看到ctags对该语言所支持的解析tag，进而据此个性化配置。
 
+### [LeaderF](https://github.com/Yggdroot/LeaderF)
 
-### Visual mode mappings
+一个强大的搜索工具，可以作为CtrlP的替代品，性能和搜索效果都要更好，可以查找文件、Buffer、函数、Buffer内的Tag、MRU等等。
 
-Visual mode pressing `*` or `#` searches for the current selection:
+**额外需要**
 
-	vnoremap <silent> * :call VisualSelection('f')<CR>
-	vnoremap <silent> # :call VisualSelection('b')<CR>
+* LeaderF需要借助[ripgrep](https://github.com/BurntSushi/ripgrep)实现正则表达式或者字符串检索, 也即是常说的grep操作, 就是在指定的文件集合中查找那些包含已知的字符串或者包含能匹配上正则表达式字符串的行。需要在本机上安装，Mac直接brew安装即可。
+* LeaderF需要借助`gtags`实现对静态符号索引文件的搜索，可以实现跳转等功能，这个我就没有选择安装，因为`coc-nvim`已经提供了跳转功能，`Vista`依赖的`ctags`也已经把buffer中的tag整理出来了。
+* LeaderF的配置主要参考了[vim plugin介绍之LeaderF](https://retzzz.github.io/dc9af5aa/)，讲得很清楚，不过更具体操作看原github文档即可。
 
-When you press gv you `Ack.vim` after the selected text:
+## 个性化配置
 
-	vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-When you press `<leader>r` you can search and replace the selected text:
-
-	vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-
-Surround the visual selection in parenthesis/brackets/etc.:
-
-    vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-    vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-    vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-    vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-    vnoremap $q <esc>`>a'<esc>`<i'<esc>
-    vnoremap $e <esc>`>a`<esc>`<i`<esc>
-
-
-### Insert mode mappings
-
-Quickly insert parenthesis/brackets/etc.:
-
-    inoremap $1 ()<esc>i
-    inoremap $2 []<esc>i
-    inoremap $3 {}<esc>i
-    inoremap $4 {<esc>o}<esc>O
-    inoremap $q ''<esc>i
-    inoremap $e ""<esc>i
-    inoremap $t <><esc>i
-
-Insert the current date and time (useful for timestamps):
-
-    iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-
-
-### Command line mappings
-
-$q is super useful when browsing on the command line. It deletes everything until the last slash:
-
-    cno $q <C-\>eDeleteTillSlash()<cr>
-
-Bash like keys for the command line:
-
-    cnoremap <C-A>		<Home>
-    cnoremap <C-E>		<End>
-    cnoremap <C-K>		<C-U>
-
-    cnoremap <C-P> <Up>
-    cnoremap <C-N> <Down>
-
-Write the file as sudo (works only on Unix). Super useful when you open a file and you don't have permissions to save your changes. [Vim tip](http://vim.wikia.com/wiki/Su-write):
-
-    :W 
-
-
-### Plugin related mappings
-
-Open [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip) to see and manage the current buffers (`<leader>o`):
-    
-    map <leader>o :BufExplorer<cr>
-
-Open [ctrlp.vim](https://github.com/kien/ctrlp.vim) plugin to quickly find a file or a buffer (`<leader>j` or `<ctrl>f`):
-
-    " Quickly find and open a file in the CWD
-    let g:ctrlp_map = '<C-f>'
-
-    " Quickly find and open a recently opened file
-    map <leader>f :MRU<CR>
-
-    " Quickly find and open a buffer
-    map <leader>b :CtrlPBuffer<cr>
-
-[NERD Tree](https://github.com/preservim/nerdtree) mappings:
-
-    map <leader>nn :NERDTreeToggle<cr>
-    map <leader>nb :NERDTreeFromBookmark 
-    map <leader>nf :NERDTreeFind<cr>
-
-[goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2) lets you only focus on one thing at a time. It removes all the distractions and centers the content. It has a special look when editing Markdown, reStructuredText and textfiles. It only has one mapping. (`<leader>z`)
-
-    map <leader>z :Goyo<cr>
-
-[vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) mappings to manage multiple cursors at once:
-
-    let g:multi_cursor_start_word_key      = '<C-s>'
-    let g:multi_cursor_select_all_word_key = '<A-s>'
-    let g:multi_cursor_start_key           = 'g<C-s>'
-    let g:multi_cursor_select_all_key      = 'g<A-s>'
-    let g:multi_cursor_next_key            = '<C-s>'
-    let g:multi_cursor_prev_key            = '<C-p>'
-    let g:multi_cursor_skip_key            = '<C-x>'
-    let g:multi_cursor_quit_key            = '<Esc>'
-
-[vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack) mappings to manage the kill-ring (clipboard):
-
-    nmap <C-p> <Plug>yankstack_substitute_older_paste
-    nmap <C-n> <Plug>yankstack_substitute_newer_paste
-
-[ctrl-p](https://github.com/ctrlpvim/ctrlp.vim) mappings to easily find and open a file, buffer, etc.:
-
-    let g:ctrlp_map = '<C-f>'
-    map <leader>j :CtrlP<cr>
-    map <C-b> :CtrlPBuffer<cr>
-
-[vim-snipmate](https://github.com/garbas/vim-snipmate) mappings to autocomplete via snippets:
-
-    ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
-    snor <C-j> <esc>i<right><C-r>=snipMate#TriggerSnippet()<cr>
-
-[vim-surround](https://github.com/tpope/vim-surround) mappings to easily surround a string with `_()` gettext annotation:
-
-    vmap Si S(i_<esc>f)
-    au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
-
-[ale](https://github.com/dense-analysis/ale) to easily go to the next Ale syntax/lint error:
-
-    nmap <silent> <leader>a <Plug>(ale_next_wrap)
-
-[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) the default mapping to toggle the plugin is (`<leader>ig`)
-
-    You can also use the following commands inside Vim:
-    :IndentGuidesEnable
-    :IndentGuidesDisable
-    :IndentGuidesToggle
-
-[vim-fugitive](https://github.com/tpope/vim-fugitive) to copy the link to the line of a Git repository to the clipboard:
-
-    nnoremap <leader>v :.GBrowse!<CR>
-    xnoremap <leader>v :'<'>GBrowse!<CR>
-
-
-### Spell checking
-Pressing `<leader>ss` will toggle spell checking:
-
-    map <leader>ss :setlocal spell!<cr>
-
-Shortcuts using `<leader>` instead of special characters:
-
-    map <leader>sn ]s
-    map <leader>sp [s
-    map <leader>sa zg
-    map <leader>s? z=
-
-### Running Code
-To run code directly from vim, press `F5`. The currently open code will execute without you having to type anything.
-
-Can be used to execute code written in C, C++, Java, Python, Go, Octave, Bash scripts and HTML. To edit how you want your code to be executed, make changes in the file 
-```
-~/vim_runtime/vimrcs/extended.vim
-```
-
-### Cope
-Query `:help cope` if you are unsure what cope is. It's super useful!
-
-When you search with `Ack.vim`, display your results in cope by doing:
-`<leader>cc`
-
-To go to the next search result do:
-`<leader>n`
-
-To go to the previous search results do:
-`<leader>p`
-
-Cope mappings:
-
-    map <leader>cc :botright cope<cr>
-    map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-    map <leader>n :cn<cr>
-    map <leader>p :cp<cr>
-
-
-## How to uninstall
-Just do following:
-* Remove `~/.vim_runtime`
-* Remove any lines that reference `.vim_runtime` in your `~/.vimrc`
-
-
-## Looking for a remote-first job?
-
-Maintaining this Vim configuration isn't my day job. Daily I am the founder/CEO of [Doist](https://doist.com/). You could come and help us build the workplace of the future while living a balanced life (anywhere in the world 🌍🌎🌏).
-
-PS: Using Vim isn't a requirement 😄
-
+主题选用了`solarized`，由于主题颜色需要提前配置生效，所以在`extended.vim`中进行了配置。其他详见`my_configs.vim`。
