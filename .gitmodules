@@ -22,9 +22,6 @@
 [submodule "my_plugins/nerdtree-git-plugin"]
 	path = my_plugins/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "my_plugins/tagbar"]
-	path = my_plugins/tagbar
-	url = https://github.com/preservim/tagbar.git
 [submodule "my_plugins/LeaderF"]
 	path = my_plugins/LeaderF
 	url = https://github.com/Yggdroot/LeaderF.git
