@@ -27,10 +27,6 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" default Colorscheme
-" set background=dark
-" colorscheme peaksea
-
 " my Colorcheme
 let g:solarized_termcolors=256
 set background=dark
