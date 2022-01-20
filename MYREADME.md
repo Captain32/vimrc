@@ -90,18 +90,26 @@
 
 一个可以在NERDTree中显示出文件当前git状态的插件。
 
-### [tagbar](https://github.com/preservim/tagbar)
+### [Vista](https://github.com/liuchengxu/vista.vim)
 
-一个可以显示出代码中组织结构的插件，可以支持很多种语言，配置每个语言详见[Wiki](https://github.com/preservim/tagbar/wiki)。
+一个可以显示出代码中组织结构的插件，默认通过ctags可以支持很多种语言，也可以为每个语言个性化配置所使用的插件。
 
 **额外需要**
 
-* 由于tagbar底层需要ctags支持，所以需要安装ctags，官方推荐安装[universal-ctags](https://github.com/universal-ctags/ctags)
+* 由于默认需要ctags支持，所以需要安装ctags，官方推荐安装[universal-ctags](https://github.com/universal-ctags/ctags)
     * 对于Mac可以选择直接用brew安装，`brew install --HEAD universal-ctags/universal-ctags/universal-ctags`
     * 对于Linux可以选择直接从源码编译安装，详见github文档
-* 配置tagbar对于Go的支持，需要本机安装[gotags](https://github.com/jstemmer/gotags)，这个其实在装vim-go依赖二进制文件时就已经安装了，然后再按照[gotags](https://github.com/jstemmer/gotags)页面的配置内容粘到my_configs.vim即可，需要注意`ctagsbin`字段，这个字段表示了tagbar将用什么作为底层解析支持，假如GOBIN配置了的话这里直接`gotags`即可，没有的话就需要添加上具体路径，比如我的`~/go/bin/gotags`
-* 对于每一个语言都可以类似刚才对Go配置的那样，明确我们需要的tag是哪些，具体可以见tagbar文档或者参照[标识符列表](https://www.bookstack.cn/read/use_vim_as_ide/4.6.md)博客进行配置方法学习。
-    * 默认使用的ctags就可以支持很多语言，可以通过`ctags --list-languages`查看ctags支持的语言(很多都可以，Go也可以，只不过更推荐用gotags)，通过`ctags --list-kinds=c++`这样类似的命令就可以看到ctags对该语言所支持的解析tag，进而据此个性化配置。
+* 默认使用的ctags就可以支持很多语言，可以通过`ctags --list-languages`查看ctags支持的语言，通过`ctags --list-kinds=c++`这样类似的命令就可以看到ctags对该语言所支持的解析tag，进而据此个性化配置。
+
+### [LeaderF](https://github.com/Yggdroot/LeaderF)
+
+一个强大的搜索工具，可以作为CtrlP的替代品，性能和搜索效果都要更好，可以查找文件、Buffer、函数、Buffer内的Tag、MRU等等。
+
+**额外需要**
+
+* LeaderF需要借助[ripgrep](https://github.com/BurntSushi/ripgrep)实现正则表达式或者字符串检索, 也即是常说的grep操作, 就是在指定的文件集合中查找那些包含已知的字符串或者包含能匹配上正则表达式字符串的行。需要在本机上安装，Mac直接brew安装即可。
+* LeaderF需要借助`gtags`实现对静态符号索引文件的搜索，可以实现跳转等功能，这个我就没有选择安装，因为`coc-nvim`已经提供了跳转功能，`Vista`依赖的`ctags`也已经把buffer中的tag整理出来了。
+* LeaderF的配置主要参考了[vim plugin介绍之LeaderF](https://retzzz.github.io/dc9af5aa/)，讲得很清楚，不过更具体操作看原github文档即可。
 
 ## 个性化配置
 

@@ -163,28 +163,70 @@ let g:airline#extensions#branch#enabled = 1
 let g:bufferline_rotate = 0
 
 """""""""""""nerdtree git plugin"""""""""""""
-" Hide [ and ]
+" 把没有变更的文件的括号去掉
 let g:NERDTreeGitStatusConcealBrackets = 0
 
 """""""""""""""LeaderF""""""""""""""" 
+" 以弹出窗口的形式显示
 let g:Lf_WindowPosition = 'popup'
+" 可以预览结果
 let g:Lf_PreviewInPopup = 1
+" 需要额外安装字体，给禁了
 let g:Lf_ShowDevIcons = 0
+" 设置哪些预览结果，哪些不预览
+let g:Lf_PreviewResult = {
+        \ 'File': 0,
+        \ 'Buffer': 0,
+        \ 'Mru': 0,
+        \ 'Tag': 0,
+        \ 'BufTag': 1,
+        \ 'Function': 1,
+        \ 'Line': 1,
+        \ 'Colorscheme': 0,
+        \ 'Rg': 0,
+        \ 'Gtags': 0
+        \}
 
+" 打开文件搜索的命令
 let g:Lf_ShortcutF = '<leader>f'
+" 打开Buffer搜索的命令
 let g:Lf_ShortcutB = '<leader>fb'
-noremap <leader>f :LeaderfSelf<cr>
+" 显示插件所有供选择命令
+noremap <leader>fs :LeaderfSelf<cr>
+" 最近访问
 noremap <leader>fm :LeaderfMru<cr>
+" 函数
 noremap <leader>ff :LeaderfFunction<cr>
+" Buffer
 noremap <leader>fb :LeaderfBuffer<cr>
+" 本Buffer中的tag，是函数的超集
 noremap <leader>ft :LeaderfBufTag<cr>
+" 当前文件搜索行，可以替代/和?
 noremap <leader>fl :LeaderfLine<cr>
+" 搜索window
 noremap <leader>fw :LeaderfWindow<cr>
+" 显示上次搜索结果
 noremap <leader>frr :LeaderfRgRecall<cr>
 
+" 当前Buffer中搜索光标所在词
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+" 所有文件中搜错光标所在词
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 
+" 使用ripgrep进行搜索
+nmap <leader>fr :Leaderf rg<cr>
+nmap <leader>fra <Plug>LeaderfRgCwordLiteralNoBoundary
+nmap <leader>frb <Plug>LeaderfRgCwordLiteralBoundary
+nmap <leader>frc <Plug>LeaderfRgCwordRegexNoBoundary
+nmap <leader>frd <Plug>LeaderfRgCwordRegexBoundary
+
+vmap <leader>fra <Plug>LeaderfRgVisualLiteralNoBoundary
+vmap <leader>frb <Plug>LeaderfRgVisualLiteralBoundary
+vmap <leader>frc <Plug>LeaderfRgVisualRegexNoBoundary
+vmap <leader>frd <Plug>LeaderfRgVisualRegexBoundary
+
 """""""""""""""Vista"""""""""""""""
+" F9显示或关闭Vista
 nmap <F9> :Vista!!<CR>
+" 需要额外安装字体，给禁了
 let g:vista#renderer#enable_icon = 0
