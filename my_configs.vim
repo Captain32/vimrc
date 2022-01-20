@@ -185,17 +185,6 @@ noremap <leader>frr :LeaderfRgRecall<cr>
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 
-"搜索当前光标下函数引用，如果搜索结果只有一个则直接跳转。
-noremap <leader>fc :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-"搜索当前光标下函数定义，如果搜索结果只有一个则直接跳转。
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-"打开上一次gtags搜索窗口。
-noremap <leader>fR :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-"跳转到下一个搜索结果。
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-"跳转到上一个搜索结果。
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
 """""""""""""""Vista"""""""""""""""
 nmap <F9> :Vista!!<CR>
 let g:vista#renderer#enable_icon = 0
