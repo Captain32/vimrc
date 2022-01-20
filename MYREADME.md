@@ -38,12 +38,11 @@
 * 首次进入vim需要安装vim-go需要的一系列二进制文件(需要翻墙)
     * 会提示用`:GoInstallBinaries`进行安装
     * 有可能会要配置`GOPATH`(假如没配置的话)，可以`go env`看一下，没有的话配置下，我一般配置到`~/go`(换成绝对路径)
-    * 翻墙失败的话就得手动安装了，可以参考[go get 方法](https://www.sunzhongwei.com/vim-execution-goinstallbinaries-installation-depend-on-failure)或[纯手动](https://bewaremypower.github.io/2019/06/21/%E6%88%91%E7%9A%84vim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-3-Go%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/)。
+    * 翻墙失败的话就得手动安装了，可以参考[go get 方法](https://www.sunzhongwei.com/vim-execution-goinstallbinaries-installation-depend-on-failure)或[纯手动](https://bewaremypower.github.io/2019/06/21/%E6%88%91%E7%9A%84vim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-3-Go%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/)。注意手动模式有的没有go.mod会导致无法go install，`go mode init`生成一个go.mod即可。
 
 ### [coc.nvim](https://github.com/neoclide/coc.nvim)
 
-管理代码补全插件的神器，本身也可以在其MarketPlace安装各个语言的插件，也可以通过`coc-settings.json`配置language server的方式实现。比如我的配置中SQL语言的[`sql-language-server`](https://github.com/joe-re/sql-language-server)就是通过这个配置文件来的。
-
+管理代码补全插件的神器，本身也可以在其MarketPlace安装各个语言的插件，也可以通过`coc-settings.json`配置language server的方式实现。
 
 在`my_configs.vim`中也自定义了一些初始化时就安装的语言插件，比如：
 
@@ -51,7 +50,7 @@
             \ 'coc-java','coc-pyright','coc-flutter',
             \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
             \ 'coc-markdownlint','coc-highlight',
-            \ 'coc-clangd','coc-sh','coc-go']
+            \ 'coc-clangd','coc-sh','coc-go','coc-sql']
 
 
 
@@ -68,8 +67,6 @@
     * `brew install llvm`即可
     * 上一步
 * 需要使用Go补全的话，因为用了gopls插件，需要在本机安装gopls(之前的vim-go安装过)
-* 需要使用SQL补全的话，因为要用`sql-language-server`，所以需要本机先安装
-    * `npm i -g sql-language-server`即可
 
 ### [vim-instant-markdown](https://github.com/instant-markdown/vim-instant-markdown)
 
@@ -80,6 +77,29 @@
 * 安装`instant-markdown-d`
     * `npm -g install instant-markdown-d`即可
 * 注意不要开代理，不然无法浏览器预览，小飞机得关掉
+
+### [vim-airline](https://github.com/vim-airline/vim-airline)
+
+一个强大的statusline和tabline工具，可以取代lightline的作用(在my_comfigs.vim中禁掉)，airline支持很多插件的扩展，具体可以看文档，想要选择不同的airline主题的话需要安装[vim-ariline-themes](https://github.com/vim-airline/vim-airline-themes)插件。
+
+### [vim-bufferline](https://github.com/bling/vim-bufferline)
+
+一个可以在命令行处显示当前buffer的插件，可以集成到airline中，但是由于自己的Mac会显示E541(状态栏东西过多)，出于强迫症禁掉了，还是在命令行显示。
+
+### [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
+
+一个可以在NERDTree中显示出文件当前git状态的插件。
+
+### [tagbar](https://github.com/preservim/tagbar)
+
+一个可以显示出代码中组织结构的插件，可以支持很多种语言，配置每个语言详见[Wiki](https://github.com/preservim/tagbar/wiki)。
+
+**额外需要**
+
+* 由于tagbar底层需要ctags支持，所以需要安装ctags，官方推荐安装[universal-ctags](https://github.com/universal-ctags/ctags)
+    * 对于Mac可以选择直接用brew安装，`brew install --HEAD universal-ctags/universal-ctags/universal-ctags`
+    * 对于Linux可以选择直接从源码编译安装，详见github文档
+* 配置tagbar对于Go的支持，需要本机安装[gotags](https://github.com/jstemmer/gotags)，这个其实在装vim-go依赖二进制文件时就已经安装了，然后再按照[gotags](https://github.com/jstemmer/gotags)页面的配置内容粘到my_configs.vim即可，需要注意`ctagsbin`字段，这个字段表示了tagbar将用什么作为底层解析支持，假如GOBIN配置了的话这里直接`gotags`即可，没有的话就需要添加上具体路径，比如我的`~/go/bin/gotags`
 
 ## 个性化配置
 
